@@ -1,0 +1,38 @@
+<h2> Detalle Pedido {{pedido.id}}</h2>
+<ul>
+    <li>Fecha: {{pedido.fecha | date:'dd/MM/yyyy'}}</li>
+    <li>Mesa: {{pedido.mesa}}</li>
+    <br>
+   
+    <li>
+        <strong>Camarero:</strong>
+        <ul>
+            <li>{{pedido.camarero.codigo}}</li>
+            <li>{{pedido.camarero.nombre}}</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+<br>
+<h4>Productos</h4>
+<div *ngIf="lineasPedidos">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let lineaPedido of lineasPedidos">
+                <td>{{lineaPedido.producto.nombre}}</td>
+                <td>{{lineaPedido.cantidad}}</td>
+                <td>{{lineaPedido.precio | currency:'EUR':true}}</td> 
+                <td>{{lineaPedido.cantidad * lineaPedido.precio | number:'0.2-2'}}</td>
+             </tr>
+        </tbody>
+    </table>
+</div>

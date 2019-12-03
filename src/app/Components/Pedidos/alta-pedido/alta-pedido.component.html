@@ -1,1 +1,36 @@
-<p>alta-pedido works!</p>
+<div class="paddingLeft">
+    <div class="padding-top" *ngIf="camareros">
+        <div class="form-group">
+          <label for="id">Id</label>
+          <input type="number" class="form-control" id="id" [(ngModel)]="newPedido.id">
+        </div>
+        <div class="form-group">
+          <label for="mesa">Mesa:</label>
+          <input type="number" class="form-control" id="mesa" [(ngModel)]="newPedido.mesa">
+        </div>
+        <div class="form-group">
+            <label for="camarero">Camareros: </label>
+            <select [(ngModel)]="newPedido.camarero" id="camarero" >
+                <option *ngFor="let camarero of camareros">{{camarero.nombre}}</option>
+            </select><br><br>
+        </div>
+    </div>
+    
+    <hr>
+    <br>
+    
+    <div class="form-group">
+        <label for="producto">Productos: </label>
+        <select [(ngModel)]="producto" id="producto" >
+            <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+        </select><br><br>
+    
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad" [(ngModel)]="lineaPedido.cantidad">
+        </div>
+        <button type="button" class="btn btn-warning" (click)="addLineaProducto()">Add Producto</button>
+    </div>
+</div>
+<br>
+<button class="btn btn-primary" (click)="create()">ADD</button>

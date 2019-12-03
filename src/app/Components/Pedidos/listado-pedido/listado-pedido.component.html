@@ -1,14 +1,21 @@
-<table class="table">
+<div *ngIf="pedidos">
+    <table class="table">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Nombre</th>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>mesa</th>
+                <th>Camarero</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor=" let camarero of camareros">
-                <td>{{camarero.codigo}}</td>
-                <td>{{camarero.nombre}}</td>
+            <tr *ngFor=" let pedido of pedidos">
+                <td>{{pedido.id}}</td>
+                <td>{{pedido.fecha | date:'dd/MM/yyyy'}}</td>
+                <td>{{pedido.mesa}}</td>
+                <td>{{pedido.camarero.nombre }}</td>
+                <td><button type="button" class="btn btn-warning" (click)="goToDetalle(pedido.id)">Detalle</button></td>
              </tr>
         </tbody>
     </table>
+</div>

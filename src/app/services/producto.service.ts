@@ -29,7 +29,9 @@ export class ProductoService {
     return this.http.post<Producto>(this.URL, producto);
   }
 
-  upDate(producto:Producto){
+  upDate(editedProducto:Producto):Observable<Producto>{
+    console.log("update" + editedProducto.codigo);
+    return this.http.put<Producto>(this.URL,editedProducto);
 
   }
 

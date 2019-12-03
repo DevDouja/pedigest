@@ -7,8 +7,9 @@ import { ListadoCamareroComponent } from './Components/Camareros/listado-camarer
 import { AltaCamareroComponent } from './Components/Camareros/alta-camarero/alta-camarero.component';
 import { ListadoPedidoComponent } from './Components/Pedidos/listado-pedido/listado-pedido.component';
 import { AltaPedidoComponent } from './Components/Pedidos/alta-pedido/alta-pedido.component';
-import { EditPedidoComponent } from './Components/Pedidos/edit-pedido/edit-pedido.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
+import { DetalleComponent } from './components/pedidos/detalle/detalle.component';
+
 
 
 const routes: Routes = [
@@ -20,9 +21,8 @@ const routes: Routes = [
   { path: 'camareros/alta', component: AltaCamareroComponent},
   { path: 'pedidos', component: ListadoPedidoComponent},
   { path: 'pedidos/alta', component: AltaPedidoComponent},
-  {path: 'pedidos/edit/:codigo', component: EditPedidoComponent},
   {path: 'productos/edit/:codigo', component: EditProductoComponent},
-
+  {path: 'detalle/:id', component: DetalleComponent},
   { path:'**', redirectTo:'/home'}
 ];
 

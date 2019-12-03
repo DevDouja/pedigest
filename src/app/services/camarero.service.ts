@@ -13,7 +13,7 @@ export class CamareroService {
   constructor(private http:HttpClient) { }
 
   getAll():Observable<Camarero[]>{
-    // Soraya
+  
     return this.http.get<Camarero[]>(this.URL);
   } 
 

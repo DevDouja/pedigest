@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedido } from 'src/app/model/pedido';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-pedido',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoPedidoComponent implements OnInit {
 
-  constructor() { }
+  pedidos:Pedido[] = undefined;
+
+  constructor( private pedidoService:PedidoService,
+              private router:Router) { }
 
   ngOnInit() {
+    this.pedidoService.getAll().subscribe(datos =>{
+      this.pedidos = datos;
+    });
+  }
+
+  goToDetalle(id:number){
+    this.router.navigateByUrl('/detalle/' + id);
   }
 
 }

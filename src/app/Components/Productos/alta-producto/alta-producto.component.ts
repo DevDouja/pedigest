@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/model/producto';
 import { ProductoService } from 'src/app/services/producto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-producto',
@@ -12,7 +13,8 @@ export class AltaProductoComponent implements OnInit {
   newProducto:Producto = new Producto();
   categorias:string[] = undefined;
 
-  constructor(private productoService:ProductoService) { }
+  constructor(private productoService:ProductoService,
+              private router:Router) { }
 
   ngOnInit() {
     this.productoService.getCategorias().subscribe(datos => {
@@ -24,5 +26,6 @@ export class AltaProductoComponent implements OnInit {
     this.productoService.create(this.newProducto).subscribe(respuesta => { 
       console.log(respuesta);
     });
+    this.router.navigateByUrl('/productos');
   }
 }

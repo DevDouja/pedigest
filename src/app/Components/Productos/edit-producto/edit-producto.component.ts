@@ -10,19 +10,38 @@ import { Producto } from 'src/app/model/producto';
 })
 export class EditProductoComponent implements OnInit {
 
+  categorias:string[] = undefined;
   editedProducto:Producto = new Producto();
+
   constructor(private productoService:ProductoService,
               private route: ActivatedRoute, 
               private router:Router) { }
 
   ngOnInit() {
+
+    this.productoService.getCategorias().subscribe(datos => {
+      this.categorias = datos;
+    });
+
     var codigo;
     this.route.params.subscribe(x => {
       console.log(x);
-      this.productoService.getProducto(Number(x.codigo)).subscribe(datos => this.editedProducto = datos);
+      this.productoService.getProducto(Number(x.codigo)).subscribe(datos => {
+       // console.log("antes del Edit" + this.editedProducto);
+        this.editedProducto = datos;
+        
+      });
     });
    
-    console.log(this.editedProducto);
+    
+  }
+
+  update(){
+    //console.log("despues del Edit" + this.editedProducto);
+    this.productoService.upDate(this.editedProducto).subscribe(respuesta=>{
+      
+      this.router.navigateByUrl('/productos');
+    })
   }
 
 }

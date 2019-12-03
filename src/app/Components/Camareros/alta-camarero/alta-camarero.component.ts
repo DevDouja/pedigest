@@ -16,9 +16,9 @@ export class AltaCamareroComponent implements OnInit {
   ngOnInit() {
   }
 
-  create(newCamarero:Camarero){
-    this.camareroService.create(newCamarero).subscribe(newCamarero => {
-      console.log(newCamarero);
+  create(){
+    this.camareroService.create(this.newCamarero).subscribe(respuesta => {
+      console.log(respuesta);
     });
   }
 }

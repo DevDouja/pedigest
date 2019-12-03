@@ -21,7 +21,7 @@ import { CamareroService } from './services/camarero.service';
 import { PedidoService } from './services/pedido.service';
 import { ProductoService } from './services/producto.service';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
-import { EditPedidoComponent } from './Components/Pedidos/edit-pedido/edit-pedido.component';
+import { DetalleComponent } from './components/pedidos/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { EditPedidoComponent } from './Components/Pedidos/edit-pedido/edit-pedid
     ListadoPedidoComponent,
     HomeComponent,
     EditProductoComponent,
-    EditPedidoComponent
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,
