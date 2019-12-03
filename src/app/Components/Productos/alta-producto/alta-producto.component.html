@@ -1,0 +1,27 @@
+<div *ngIf="categorias">
+        Codigo Producto:<br>
+        <input type="text" [(ngModel)]="newProducto.codigo" >
+        <br>
+        Nombre Producto:<br>
+        <input type="text" [(ngModel)]="newProducto.nombre" >
+        <br>
+        Precio Producto:<br>
+        <input type="text" [(ngModel)]="newProducto.precio" >
+        <br>
+        Descripcion Producto:<br>
+        <input type="text" [(ngModel)]="newProducto.descripcion" >
+        <br>
+        FechaAlta Producto:<br>
+        <input type="date" [(ngModel)]="newProducto.fechaAlta" >
+        <br>
+        Descatalogado Producto:<br>
+        <input type="checkbox"  [(ngModel)]="newProducto.descatalogado">
+        <br>
+        Categoria Producto:<br>
+
+        <select [(ngModel)]="newProducto.categoria" >
+            <option *ngFor="let categoria of categorias">{{categoria}}</option>
+        </select><br><br>
+
+        <button (click)="create(newProducto)">ADD</button>
+    </div>

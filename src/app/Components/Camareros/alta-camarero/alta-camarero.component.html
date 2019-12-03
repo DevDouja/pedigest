@@ -1,0 +1,11 @@
+<div class="padding-top">
+    <div class="form-group">
+      <label for="codigo">Código</label>
+      <input type="number" class="form-control" id="codigo" [(ngModel)]="newCamarero.codigo">
+    </div>
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="newCamarero.nombre">
+    </div>
+    <button class="btn btn-primary" (click)="create(newCamarero)">ADD</button>
+</div>

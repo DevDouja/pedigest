@@ -1,0 +1,32 @@
+<div class="padding-top">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Código</span>
+      </div>
+      <input [(ngModel)]="editedProducto.codigo" type="number" class="form-control" disabled>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Nombre</span>
+        </div>
+        <input [(ngModel)]="editedProducto.nombre" type="text" class="form-control">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Precio</span>
+      </div>
+      <input [(ngModel)]="editedProducto.precio" type="text" class="form-control">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">FechaAlta</span>
+      </div>
+      <input [(ngModel)]="editedProducto.fechaAlta" type="text" class="form-control">
+   </div>
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Descripcion</span>
+    </div>
+    <input [(ngModel)]="editedProducto.descripcion" type="text" class="form-control">
+    </div> 
+</div>

@@ -1,0 +1,27 @@
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>FechaAlta</th>
+                    <th>Descripcion</th>
+                    <th>Descatalogado</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let producto of productos">
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.fechaAlta | date:'dd/MM/yyyy'}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.descatalogado}}</td>
+                    <td>{{producto.categoria}}</td>
+                    <td><button type="button" class="btn btn-warning" (click)="update(producto.codigo)">Edit</button></td>
+                 </tr>
+            </tbody>
+        </table>
