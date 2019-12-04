@@ -21,4 +21,9 @@ export class PedidoService {
     console.log(id);
     return this.http.get<Pedido>( this.URL + "/"+id);
   }
+
+  create(pedido:Pedido):Observable<Pedido>{
+
+    return this.http.post<Pedido>(this.URL,pedido);
+  }
 }

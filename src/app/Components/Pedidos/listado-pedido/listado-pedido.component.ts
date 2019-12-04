@@ -16,6 +16,7 @@ export class ListadoPedidoComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit() {
+    this.pedidos = [];
     this.pedidoService.getAll().subscribe(datos =>{
       this.pedidos = datos;
     });

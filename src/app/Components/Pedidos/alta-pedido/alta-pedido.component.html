@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="camarero">Camareros: </label>
             <select [(ngModel)]="newPedido.camarero" id="camarero" >
-                <option *ngFor="let camarero of camareros">{{camarero.nombre}}</option>
+                <option *ngFor="let camarero of camareros" [ngValue]="camarero">{{camarero.nombre}}</option>
             </select><br><br>
         </div>
     </div>
@@ -27,10 +27,24 @@
     
         <div class="form-group">
             <label for="cantidad">Cantidad:</label>
-            <input type="number" class="form-control" id="cantidad" [(ngModel)]="lineaPedido.cantidad">
+            <input type="number" class="form-control" id="cantidad" [(ngModel)]="cantidad">
         </div>
         <button type="button" class="btn btn-warning" (click)="addLineaProducto()">Add Producto</button>
     </div>
 </div>
 <br>
-<button class="btn btn-primary" (click)="create()">ADD</button>
+<table class="table" *ngIf="lineasPedido">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let linea of lineasPedido">
+            <td>{{linea.producto.nombre}}</td>
+            <td>{{linea.cantidad}}</td>
+         </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" (click)="addPedido()">ADD</button>
