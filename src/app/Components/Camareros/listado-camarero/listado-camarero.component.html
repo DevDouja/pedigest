@@ -1,14 +1,26 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor=" let camarero of camareros">
-            <td>{{camarero.codigo}}</td>
-            <td>{{camarero.nombre}}</td>
-         </tr>
-    </tbody>
-</table>
+<div class="jumbotron">
+        <div class="container">
+          <h1 class="display-5">Lista Camareros</h1>
+        </div>
+</div>
+<div class="container1">
+<p-table [columns]="cols" [value]="camareros" class="centro">
+  
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-camarero>
+                <tr>
+                    <td>{{camarero.codigo}}</td>
+                    <td>{{camarero.nombre}}</td>
+                </tr>
+            </ng-template>
+        <ng-template pTemplate="summary">
+            Hay {{camareros?.length}} camareros
+        </ng-template>
+</p-table>
+</div>
+

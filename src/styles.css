@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilo prime ng*/
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/nova-light/theme.css';
+@import '~primeng/resources/primeng.min.css';
+
+
+.paddingTop{
+    padding-top: 2%;
+}
+
+.numeros{
+    text-align: right;
+}
+
+.paddingButtom{
+    padding-top: 2%;
+}
+
+.container1{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+.centro{
+    vertical-align: center !important;
+    text-align: center !important;
+}
+
+.azul{
+    background-color: #007ad9 !important;
+}

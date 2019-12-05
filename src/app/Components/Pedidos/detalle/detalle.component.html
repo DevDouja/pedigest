@@ -1,38 +1,47 @@
-<h2> Detalle Pedido {{pedido.id}}</h2>
-<ul>
-    <li>Fecha: {{pedido.fecha | date:'dd/MM/yyyy'}}</li>
-    <li>Mesa: {{pedido.mesa}}</li>
-    <br>
-   
-    <li>
-        <strong>Camarero:</strong>
-        <ul>
-            <li>{{pedido.camarero.codigo}}</li>
-            <li>{{pedido.camarero.nombre}}</li>
-        </ul>
-    </li>
-</ul>
 
-<hr>
-<br>
-<h4>Productos</h4>
-<div *ngIf="lineasPedidos">
-    <table class="table">
-        <thead>
+<div class="jumbotron">
+        <div class="container">
+          <h1 class="display-5">Detalle Pedido {{id}}</h1>
+        </div>
+</div>
+
+<div class="container1">
+        
+    <div class="ui-inputgroup paddingTop">
+        <span class="ui-inputgroup-addon" style="background-color:#007ad9; color:aliceblue;">Fecha</span>
+        <input type="text" pInputText value="{{pedido.fecha | date:'dd/MM/yyyy'}}" disabled style="color:#000000; font-size: 16px;">      
+    </div>
+        
+    <div class="ui-inputgroup paddingTop">
+        <span class="ui-inputgroup-addon" style="background-color:#007ad9; color:aliceblue;">Mesa</span>
+        <input type="text" pInputText value="{{pedido.mesa}}" disabled style="color:#000000; font-size: 16px;">      
+    </div>
+         
+    <div class="ui-inputgroup paddingTop">
+        <span class="ui-inputgroup-addon azul" style="background-color:#007ad9; color:aliceblue;">Camarero</span>
+        <input type="text" pInputText value="{{pedido.camarero.nombre}}" disabled style="color:#000000; font-size: 16px;">      
+    </div>
+    <div class="paddingTop"></div>
+    <p-table [columns]="cols" [value]="lineasPedidos" class="centro">
+ 
+        <ng-template pTemplate="header">
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor=" let lineaPedido of lineasPedidos">
+        </ng-template>
+        <ng-template pTemplate="body" let-lineaPedido>
+            <tr>
                 <td>{{lineaPedido.producto.nombre}}</td>
                 <td>{{lineaPedido.cantidad}}</td>
                 <td>{{lineaPedido.precio | currency:'EUR':true}}</td> 
                 <td>{{lineaPedido.cantidad * lineaPedido.precio | number:'0.2-2'}}</td>
-             </tr>
-        </tbody>
-    </table>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            Hay {{lineasPedidos?.length}} productos
+        </ng-template>
+    </p-table>
 </div>

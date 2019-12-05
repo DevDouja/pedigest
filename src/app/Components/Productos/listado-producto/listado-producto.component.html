@@ -1,6 +1,14 @@
-
-    <table class="table">
-            <thead>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-5">Lista Productos</h1>
+    </div>
+</div>
+<div class="container1">
+<p-table [columns]="cols" [value]="productos" class="centro">
+        <ng-template pTemplate="caption">
+            Pedidos
+        </ng-template>
+            <ng-template pTemplate="header">
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
@@ -11,17 +19,22 @@
                     <th>Categoria</th>
                     <th>Editar</th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor=" let producto of productos">
+            </ng-template>
+            <ng-template pTemplate="body" let-producto>
+                <tr>
                     <td>{{producto.codigo}}</td>
                     <td>{{producto.nombre}}</td>
                     <td>{{producto.precio}}</td>
                     <td>{{producto.fechaAlta | date:'dd/MM/yyyy'}}</td>
                     <td>{{producto.descripcion}}</td>
-                    <td>{{producto.descatalogado}}</td>
+                    <td class="redText">{{producto.descatalogado| boolean }}</td>
                     <td>{{producto.categoria}}</td>
-                    <td><button type="button" class="btn btn-warning" (click)="update(producto.codigo)">Edit</button></td>
-                 </tr>
-            </tbody>
-        </table>
+                    <td><button pButton type="button" label="Editar" (click)="update(producto.codigo)"></button></td>
+                </tr>
+            </ng-template>
+        <ng-template pTemplate="summary">
+            Hay {{productos?.length}} productos
+        </ng-template>
+    </p-table>
+</div>
+

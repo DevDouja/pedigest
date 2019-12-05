@@ -10,7 +10,7 @@ import { Producto } from '../model/producto';
 })
 export class ProductoService {
 
-  URL = "http://localhost:8086/api/productos";
+  URL = "http://10.250.5.44:8086/api/productos";
 
   constructor(private http:HttpClient) { }
 
@@ -21,7 +21,7 @@ export class ProductoService {
 
   getCategorias():Observable<string[]>{
 
-    return this.http.get<string[]>('http://localhost:8086/api/categorias');
+    return this.http.get<string[]>('http://10.250.5.44:8086/api/categorias');
   }
 
   create(producto:Producto):Observable<Producto>{

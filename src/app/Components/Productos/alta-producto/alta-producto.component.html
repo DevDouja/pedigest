@@ -1,4 +1,4 @@
-<div *ngIf="categorias">
+<!-- <div *ngIf="categorias">
         Codigo Producto:<br>
         <input type="text" [(ngModel)]="newProducto.codigo" >
         <br>
@@ -25,3 +25,41 @@
 
         <button (click)="create(newProducto)">ADD</button>
     </div>
+ -->
+
+<!-- **************************** -->
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-5">Crear Producto</h1>
+    </div>
+</div>
+
+<div class="container1">
+    <h5 class="first paddingTop">Id</h5>
+    <p-spinner size="30" [(ngModel)]="newProducto.codigo" min=0 ></p-spinner>
+
+    <h5 class="first paddingTop">Nombre</h5>
+    <input id="input" type="text" size="30" pInputText [(ngModel)]="newProducto.nombre"> 
+
+    <h5 class="first paddingTop">Precio</h5>
+    <p-spinner size="30" [(ngModel)]="newProducto.precio" min=0></p-spinner>
+
+    <h5 class="first paddingTop">Descripcion</h5>
+    <input id="input" type="text" size="30" pInputText [(ngModel)]="newProducto.descripcion">
+
+    <h5 class="first paddingTop">Fecha</h5>
+    <p-calendar [(ngModel)]="newProducto.fechaAlta"></p-calendar>
+
+    <div class="ui-g paddingTop" style="width:250px;margin-bottom:10px">
+        <div class="ui-g-12"><p-checkbox name="group1" value="New York" label="Descatalogado" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox></div>
+    </div>
+
+    <h5 class="first paddingTop">Categorias</h5>
+    <p-dropdown [options]="categorias" [(ngModel)]="newProducto.categoria" placeholder="Selecciona una Categoria"  [showClear]="true"></p-dropdown>
+  
+    <div class="paddingTop"></div>
+    <button pButton type="button" label="Proceder" class="ui-button-success" (click)="create()"></button>
+    
+</div>
+

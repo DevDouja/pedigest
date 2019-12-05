@@ -22,6 +22,9 @@ import { PedidoService } from './services/pedido.service';
 import { ProductoService } from './services/producto.service';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 import { DetalleComponent } from './components/pedidos/detalle/detalle.component';
+import { PrimengModule } from './primeng/primeng.module';
+import { BooleanPipe } from './pipes/boolean.pipe';
+
 
 @NgModule({
   declarations: [
@@ -35,12 +38,15 @@ import { DetalleComponent } from './components/pedidos/detalle/detalle.component
     HomeComponent,
     EditProductoComponent,
     DetalleComponent,
+    BooleanPipe
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PrimengModule
   ],
   providers: [CamareroService, PedidoService, ProductoService],
   bootstrap: [AppComponent]

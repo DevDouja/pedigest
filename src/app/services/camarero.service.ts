@@ -8,7 +8,7 @@ import { Camarero } from '../model/camarero';
 })
 export class CamareroService {
 
-  URL = "http://localhost:8086/api/camareros";
+  URL = "http://10.250.5.44:8086/api/camareros";
 
   constructor(private http:HttpClient) { }
 

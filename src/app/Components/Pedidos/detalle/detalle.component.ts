@@ -15,6 +15,7 @@ export class DetalleComponent implements OnInit {
 
   lineasPedidos:LineasPedido[] = undefined;
   pedido:Pedido = new Pedido();
+  id:number =0;
 
 
   constructor( private router:Router,
@@ -25,6 +26,7 @@ export class DetalleComponent implements OnInit {
     this.pedido.camarero = new Camarero();
  
     this.route.params.subscribe(x => {
+      this.id = Number(x.id);
       console.log(x);
       this.pedidoService.getPedido(Number(x.id)).subscribe(datos => {
         this.pedido = datos;

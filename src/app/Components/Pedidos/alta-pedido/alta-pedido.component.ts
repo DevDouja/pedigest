@@ -39,9 +39,16 @@ export class AltaPedidoComponent implements OnInit {
       console.log("altapedido" + datos);
       this.productos = datos;
     });
+
+
+
   }
 
   addLineaProducto(){
+   /* console.log("***********");
+    console.log(this.newPedido.camarero);
+    console.log(this.newPedido.id);
+    console.log(this.newPedido.mesa);*/
 
     this.lineaPedido = new LineasPedido();
     this.lineaPedido.cantidad = this.cantidad;

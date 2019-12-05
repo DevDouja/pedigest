@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/model/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Router } from '@angular/router';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-alta-producto',
@@ -11,15 +12,20 @@ import { Router } from '@angular/router';
 export class AltaProductoComponent implements OnInit {
 
   newProducto:Producto = new Producto();
-  categorias:string[] = undefined;
+  categorias:SelectItem[] = [];
+
 
   constructor(private productoService:ProductoService,
               private router:Router) { }
 
   ngOnInit() {
     this.productoService.getCategorias().subscribe(datos => {
-      this.categorias = datos;
+
+      for(let categoria of datos){
+        this.categorias.push({label:categoria, value: categoria})
+      }
     });
+
   }
 
   create(){

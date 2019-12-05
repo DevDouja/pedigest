@@ -8,7 +8,7 @@ import { Pedido } from '../model/pedido';
 })
 export class PedidoService {
 
-  URL="http://localhost:8086/api/pedidos";
+  URL="http://10.250.5.44:8086/api/pedidos";
 
   constructor( private http:HttpClient) { }
 

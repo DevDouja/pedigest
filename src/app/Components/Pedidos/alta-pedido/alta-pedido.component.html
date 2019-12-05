@@ -1,50 +1,57 @@
-<div class="paddingLeft">
-    <div class="padding-top" *ngIf="camareros">
-        <div class="form-group">
-          <label for="id">Id</label>
-          <input type="number" class="form-control" id="id" [(ngModel)]="newPedido.id">
+
+<div class="jumbotron">
+        <div class="container">
+          <h1 class="display-5">Crear Pedido</h1>
         </div>
-        <div class="form-group">
-          <label for="mesa">Mesa:</label>
-          <input type="number" class="form-control" id="mesa" [(ngModel)]="newPedido.mesa">
-        </div>
-        <div class="form-group">
-            <label for="camarero">Camareros: </label>
-            <select [(ngModel)]="newPedido.camarero" id="camarero" >
-                <option *ngFor="let camarero of camareros" [ngValue]="camarero">{{camarero.nombre}}</option>
-            </select><br><br>
-        </div>
-    </div>
-    
-    <hr>
-    <br>
-    
-    <div class="form-group">
-        <label for="producto">Productos: </label>
-        <select [(ngModel)]="producto" id="producto" >
-            <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
-        </select><br><br>
-    
-        <div class="form-group">
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" class="form-control" id="cantidad" [(ngModel)]="cantidad">
-        </div>
-        <button type="button" class="btn btn-warning" (click)="addLineaProducto()">Add Producto</button>
-    </div>
 </div>
+
+<div class="container1">
+    <div *ngIf="camareros">
+        <br>
+        <h5 class="first paddingTop">Id</h5>
+        <p-spinner size="30" [(ngModel)]="newPedido.id" ></p-spinner>
+        
+        <h5 class="first paddingTop">Mesa</h5>
+        <p-spinner size="30" [(ngModel)]="newPedido.mesa" ></p-spinner>
+        
+        <h5 class="first paddingTop">Camareros</h5>
+        <p-dropdown [options]="camareros" [(ngModel)]="newPedido.camarero"  placeholder="Selecciona un Camarero" optionLabel="nombre" [showClear]="true"></p-dropdown>
+  
+        <h5 class="first paddingTop">Productos</h5>
+        <p-dropdown [options]="productos" [(ngModel)]="producto"  placeholder="Selecciona un producto" optionLabel="nombre" [showClear]="true"></p-dropdown>
+        
+        <h5 class="first paddingTop ">Cantidad</h5>
+        <p-spinner size="30" [(ngModel)]="cantidad" ></p-spinner>
+        
+        <div class="paddingTop"></div>
+        <button pButton type="button" label="Añadir Producto" class="ui-button-info" (click)="addLineaProducto()"></button>
+    </div>
+
 <br>
-<table class="table" *ngIf="lineasPedido">
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor=" let linea of lineasPedido">
-            <td>{{linea.producto.nombre}}</td>
-            <td>{{linea.cantidad}}</td>
-         </tr>
-    </tbody>
-</table>
-<button class="btn btn-primary" (click)="addPedido()">ADD</button>
+
+    <p-table [columns]="cols" [value]="lineasPedido" class="centro">
+        <ng-template pTemplate="caption">
+            Productos
+        </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-linea>
+                <tr>
+                    <td>{{linea.producto.nombre}}</td>
+                    <td>{{linea.cantidad}}</td>
+                    <td>{{linea.cantidad * linea.producto.precio |currency:'EUR':true}}</td>
+                </tr>
+            </ng-template>
+        <ng-template pTemplate="summary">
+            Hay {{lineasPedido?.length}} productos
+        </ng-template>
+    </p-table>
+
+    <div class="paddingTop"></div>
+    <button pButton type="button" label="Proceder" class="ui-button-success" (click)="addPedido()"></button>
+</div>
